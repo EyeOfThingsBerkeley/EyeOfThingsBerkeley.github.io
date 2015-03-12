@@ -1,0 +1,1088 @@
+{
+  "totalItems": 50,
+  "@type": "http://activitystrea.ms/2.0/Collection",
+  "items": [
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "leave",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/3ebf9c6103f841e4ade15726d596ad7f",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "checkin",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/094f38e05aa9408b97dd01c4edd97be2",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "leave",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/35beaf7ecd394e16ba11cd15e9dbc5ec",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "leave",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/ebbaa07648994f5fb6f0f3c733818f2e",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "checkin",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/8027efdda03244fa85079f9f4c02ebb8",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "leave",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/8f66aac194374938beaf1bf1dca284be",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "leave",
+      "id": "http://128.32.78.37:8080/activities/9f13612b5b6948a0b6b6171d7f551752",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "leave",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/96203ca2f02040e1b8babcfa9ca0b0c9",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "checkin",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/72c24d2503424730b41d04b38b038099",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Unknown",
+        "objectType": "person"
+      },
+      "verb": "leave",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/7725d5a6ba3e4167b04cafaca6a16352",
+      "object": {
+        "displayName": "Chair at 202 South Hall, UC Berkeley",
+        "descriptor_tags": [
+          "chair",
+          "rolling"
+        ],
+        "id": "http://example.org/berkeley/southhall/202/chair/1",
+        "position": {
+          "altitude": 100.05,
+          "latitude": 34.34,
+          "longitude": -127.23
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/11f4986ab1b64cae88490cf823064d2a",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/0dcd84008fbc490aaa276bf34598c992",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/e45c46e5309a4d42a691a1e1658414e1",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/d8eafe2c1b1d44ffbfb557659967a09b",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/45c43c4486a84d58b0f1a109cab57a9c",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/9d25d7e36c67466d9088bc35bc0af121",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/ea0a0c287adb4e99bff3e12cf9b11159",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/1d14898744ef4bb387e43b61e2de86fe",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/e6343e7b30904137b402c43198a4781e",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/15676a9c5ce64d379f1c5d7f7cfeeaf3",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/dd745679049e4a5c86d73db8e0499401",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/07e7a43996f24ca4a453a2933b5f7afc",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/f132b0c406734572881a5d74d38904de",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/f783d5b8539c4347bea8b6ccd5e12c3a",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/530de41293f14dfeb9d41547c5422018",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/9a5b1b2eb1294a61943fbaab89db48fa",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/388246b22e2d47eda1fcf6d2d85ce04d",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/9727af4808984d50b7de68b2249beafc",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/a01a1908b68d44649aa8a825730fb20a",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/857c391900d2449496b78ee922aea2ca",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Martin Smith",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/6a9f959b02654bc199389cac2b3a485c",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Jane Smith",
+        "id": "http://example.org/janesmith",
+        "objectType": "person"
+      },
+      "verb": "add",
+      "published": "2015-01-06T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/f972911c21b34d2494c202d1e7fe60b7",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "HR",
+          "steps",
+          "GSR",
+          "stemp",
+          "atemp"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/basisdata_patient5_all.csv",
+        "objectType": "exerciseRecord"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "John Doe",
+        "id": "http://example.org/johndoe",
+        "objectType": "person"
+      },
+      "verb": "add",
+      "startTime": "2014-06-17T18:14:00.000Z",
+      "published": "2015-01-06T15:04:55.000Z",
+      "endTime": "2014-06-17T18:52:00.000Z",
+      "id": "http://128.32.78.37:8080/activities/54c8ac3cb1f642f29583e93e06ca3436",
+      "subVerb": "http://siemens.com/schemas/activity#Cycling",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "HR",
+          "steps",
+          "GSR",
+          "stemp",
+          "atemp"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/basisdata_patient1_cycling.csv",
+        "objectType": "exerciseRecord"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "John Doe",
+        "id": "http://example.org/johndoe",
+        "objectType": "person"
+      },
+      "verb": "add",
+      "published": "2015-01-06T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/833f539520634c6da89fd92484db9ddd",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "HR",
+          "steps",
+          "GSR",
+          "stemp",
+          "atemp"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/basisdata_patient1_all.csv",
+        "objectType": "exerciseRecord"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Siemens Wind Turbine 11",
+        "id": "http://example.org/windturbine_11",
+        "objectType": "device"
+      },
+      "verb": "add",
+      "startTime": "2014-06-17T18:14:00.000Z",
+      "published": "2015-01-06T15:04:55.000Z",
+      "endTime": "2014-06-17T18:52:00.000Z",
+      "id": "http://128.32.78.37:8080/activities/24704fcd908545bc90e60c86c983376c",
+      "subVerb": "http://siemens.com/schemas/activity#Maintenance",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "powerOutput",
+          "windSpeed"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/data_turbine11_maintenance.csv",
+        "objectType": "exerciseRecord"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "Siemens Wind Turbine 11",
+        "id": "http://example.org/windturbine_11",
+        "objectType": "device"
+      },
+      "verb": "add",
+      "published": "2015-01-06T15:04:55.000Z",
+      "id": "http://128.32.78.37:8080/activities/57bdffc1eda24703aae1e66bde0b86f2",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "powerOutput",
+          "windSpeed"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/data_turbine11_all.csv",
+        "objectType": "exerciseRecord"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "TestSeat",
+        "objectType": "person"
+      },
+      "requestID": "personID",
+      "descriptor-tags": [
+        "chair",
+        "rolling"
+      ],
+      "verb": "request",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "cc4fd652ebae4293b047689efabc9155",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "position": {
+          "altitude": "100.05",
+          "latitude": "34.34",
+          "longitude": "-127.23"
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "TestSeat",
+        "objectType": "person"
+      },
+      "requestID": "personID",
+      "descriptor-tags": [
+        "chair",
+        "rolling"
+      ],
+      "verb": "request",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "cca19ccedc854b7f851aa0d208466cad",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "position": {
+          "altitude": "",
+          "latitude": "",
+          "longitude": ""
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayname": "TestSeat",
+        "objectType": "person"
+      },
+      "requestID": "personID",
+      "descriptor-tags": [
+        "chair",
+        "rolling"
+      ],
+      "verb": "post",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "8dc297d81bb9484f84c9706a8472c491",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "position": {
+          "altitude": "",
+          "latitude": "",
+          "longitude": ""
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "TestSeat",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "UUID": "c88bda3d132448329ab44924c98bb765",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      }
+    },
+    {
+      "actor": {
+        "displayname": "TestSeat",
+        "objectType": "person"
+      },
+      "requestID": "personID",
+      "descriptor-tags": [
+        "chair",
+        "rolling"
+      ],
+      "verb": "request",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "480ef36e0ca64cf0afd76d623d8ef009",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "position": {
+          "altitude": "",
+          "latitude": "",
+          "longitude": ""
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayname": "TestSeat",
+        "objectType": "person"
+      },
+      "requestID": "personID",
+      "descriptor-tags": [
+        "chair",
+        "rolling"
+      ],
+      "verb": "request",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "fb252a7d5abe403890778645eb7d7c34",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayname": "TestSeat",
+        "objectType": "person"
+      },
+      "requestID": "personID",
+      "descriptor-tags": [
+        "chair",
+        "rolling"
+      ],
+      "verb": "request",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "bd986f65f8414aba92436028d4472ded",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayname": "TestSeat",
+        "objectType": "person"
+      },
+      "requestID": "personID",
+      "verb": "request",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "424f93b098824ee39b3da31ca1a017a7",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayname": "TestSeat",
+        "objectType": "person"
+      },
+      "verb": "request",
+      "startTime": "2015-03-10T00:04:55.000Z",
+      "endTime": "2015-03-11T00:04:55.000Z",
+      "UUID": "94e56ee87bdd437eb8ccb1bd00042409",
+      "object": {
+        "displayName": "Chair",
+        "id": "chairID",
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayname": "TestSeat",
+        "objectType": "person"
+      },
+      "verb": "request",
+      "UUID": "5e838029e4304c2c945efe24743be158",
+      "object": {
+        "displayName": "",
+        "id": "",
+        "position": {
+          "altitude": "",
+          "latitude": "",
+          "longitude": ""
+        },
+        "objectType": "place"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "TestSeat",
+        "id": "tag:example.org,2011:martin",
+        "url": "http://example.org/martin",
+        "objectType": "person"
+      },
+      "verb": "post",
+      "published": "2011-02-10T15:04:55.000Z",
+      "UUID": "b1de74527b6448649645ffd1ddc045ef",
+      "object": {
+        "id": "tag:example.org,2011:abc123/xyz",
+        "url": "http://example.org/blog/2011/02/entry"
+      },
+      "target": {
+        "displayName": "Martin's Blog",
+        "id": "tag:example.org,2011:abc123",
+        "url": "http://example.org/blog/",
+        "objectType": "blog"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "TestPatient",
+        "id": "http://example.org/TestPatient",
+        "objectType": "person"
+      },
+      "verb": "add",
+      "published": "2015-01-06T15:04:55.000Z",
+      "UUID": "408f8faed3a14e8db2acf3b89dec35ce",
+      "uuid": "http://example.org/activities/TestPatient_add_1234",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "HR",
+          "steps",
+          "GSR",
+          "stemp",
+          "atemp"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/basisdata_patient1_all.csv",
+        "objectType": "exerciseRecord"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "TestPatient",
+        "id": "http://example.org/TestPatient",
+        "objectType": "person"
+      },
+      "verb": "add",
+      "startTime": "2014-06-17T18:14:00.000Z",
+      "published": "2015-01-06T15:04:55.000Z",
+      "endTime": "2014-06-17T18:52:00.000Z",
+      "UUID": "3687198d00da48b3a420b6b323781029",
+      "uuid": "http://example.org/activities/TestPatient_add_cycling_4321",
+      "subVerb": "http://siemens.com/schemas/activity#Cycling",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "HR",
+          "steps",
+          "GSR",
+          "stemp",
+          "atemp"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/basisdata_patient1_cycling.csv",
+        "objectType": "exerciseRecord"
+      }
+    },
+    {
+      "actor": {
+        "displayName": "TestPatient 5",
+        "id": "http://example.org/TestPatient5",
+        "objectType": "person"
+      },
+      "verb": "add",
+      "published": "2015-01-06T15:04:55.000Z",
+      "UUID": "3a04936ad8a34dc39e078cc993cc5ba2",
+      "uuid": "http://example.org/activities/TestPatient5_add_1332",
+      "status": "completed",
+      "object": {
+        "dataFields": [
+          "time",
+          "HR",
+          "steps",
+          "GSR",
+          "stemp",
+          "atemp"
+        ],
+        "url": "http://russet.ischool.berkeley.edu:8081/tim_testdata/basisdata_patient5_all.csv",
+        "objectType": "exerciseRecord"
+      }
+    }
+  ]
+}
