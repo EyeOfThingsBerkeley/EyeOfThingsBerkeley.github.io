@@ -4,74 +4,34 @@
 	<meta charset="utf-8">
 	<title>IoT Parser</title>  
 	<script src="js/papaparse.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<!--Need to download JQuery -->
 </head>
 
 <body>
 </body>
 
 <script>
-	var results = []
-	$.ajax({//how to load a local file without JQuery
-		url:"data/DataDrop_Output_2.csv"
-		//Note this data has been preprocessed 
-	}).done(function(d){
-		papaParser(d)
-	})
+	//The file gets loaded here
+	//how to do error reporting and such in pure javascript
+	var oReq = new XMLHttpRequest();
+	//Method below gets execured onload
+	oReq.onload = function(){ papaParser(this.responseText); };
+	oReq.open("GET", "data/DataDrop_Output_2.csv", true);
+	oReq.send();
 
+
+	var results = []
+	//What to do about the pipes?
 	function papaParser(file){
 		Papa.parse(file, {
 			complete: function(data) {
 				console.log(data);
-				results = data;
-				//convert(results);
-				var target_col = '|activity_type |';
-				var target_item = '|pocket|'
-				var target_data = ['|change value1 |', '|excerpttagsurl|', '|target_displayname|'];
-				access(target_col, target_item, target_data);
+				results = data;//better to reference a global or keeping on passing around?
+				visualize();
 			}
 		});
 	}
 
-	/*function convert(data){
-		var newData = []
-		for(var i = 0; i < data.data.length; i++){
-			//convert each of the sub array to a json then add to the array
-
-			var str = '{';
-			for(var e = 0; e < data.data[i].length; e++){
-				var key = data.data[i][e].split('=')[0];
-				var value = data.data[i][e].split('=')[1];
-				if(e > 0 && key != "")
-					str = str.concat(',');
-				if(key != "")
-					str = str.concat('"' + key + '":"' + value + '"');
-			}
-
-			//str = str.concat(data.data[i].join());
-			str = str.concat('}');
-			//console.log(str);
-
-			try{
-				//console.log(JSON.stringify(eval("(" + str + ")"))['Timestamp
-
-				var jsonStr = JSON.parse(str);
-				console.log(i + " - " + jsonStr['Timestamp'])
-				//having problems in parsing '['
-
-				var key = [];
-				for(keys in jsonStr)
-					key.push(keys);
-				console.log(key)
-				
-			}catch(error){
-				console.log(str)
-				console.log(error)
-			}
-		}
-	}*/
-	function access(target_col, target_item, target_data){//need to convert target_data to col #
+	function access(target_col, target_item, target_data){
 		var header = results.data[0];
 		console.log(header)
 		var col = 0;
@@ -79,28 +39,71 @@
 		for(i in header){
 			if(header[i] == target_col){
 				console.log(i + " : " + header[i])
-				col = i;//getthe target column
+				col = i;//get the target column of interest
 			}
+			//get the columns # of target_data
+			//more efficient to create a dict -> reference the dict? Instead of checking everytime the method is called?
 			if(target_data.indexOf(header[i]) > -1)
 				target_data_col.push(i);
 		}
 		console.log(target_data_col)
 
+		//going through the individual rows to extract necessary data
 		var rows = results.data;
 		var information = [];
 		for(i in rows){
 			if(rows[i][col] == target_item){//at the target row
-				var information_row = []
+				var information_row = [target_item]
 				for(c in rows[i]){
 					if(target_data_col.indexOf(c) > -1){
-						information_row.push(rows[i][c]);
+						//order of info is the same as the target_data
+						//better to make a dictionary?
+						information_row.push(rows[i][c].split("|")[1]);
+						//pipes are removed
 					}
 				}
 				information.push(information_row);
 				information_row = [];
 			}
 		}
-		console.log(information)
+		return information;
+	}
+
+	function visualize(){
+		var target_col = '|activity_type |';
+		var target_item = '|pocket|'
+		var target_data = ['|change value1 |', '|excerpttagsurl|', '|target_displayname|', '|titleexcerpttagsurl|'];
+		var r = access(target_col, target_item, target_data);
+		console.log(r);
+		for(i in r){
+			var date = r[i][1];
+			console.log(convertDate(date))
+		}
+	}
+
+	//why is datetime not in ISO8601 compatable format
+	function convertDate(date){
+		if(isNaN(Date.parse(date)) == false){
+			return Date.parse(date);
+		}
+		//console.log(date)
+		date = date.replace('at', '');
+		var time = date.split(' ').pop();
+		date = date.replace(date.slice(-8), '');//eliminating the hr:min
+		if(time == time.replace('PM', '')){//if AM
+			date = date.concat(time.replace('AM', ''));
+		}
+		if(time == time.replace('AM', '')){//if PM
+			time = time.replace('PM', '');
+			var adj = parseInt(time) + 12 + ":" + time.split(':')[1];
+
+			//to adjust for PM > 12:xx cases
+			if(adj.split(':')[0] == 24 && adj.split(':')[1] > 0)
+				adj = 00 + ":" + time.split(':')[1];
+			date = date.concat(adj);
+		}
+		//console.log(date);
+		return Date.parse(date);
 	}
 
 </script>
