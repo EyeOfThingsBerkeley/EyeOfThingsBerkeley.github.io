@@ -22,18 +22,19 @@ function papaParser(file){
 
 function access(target_col, target_item, target_data){
 	var header = results.data[0];
-	console.log(header)
 	var col = 0;
 	var target_data_col = []
 	for(i in header){
 		if(header[i] == target_col){
-			console.log(i + " : " + header[i])
-			col = i;//get the target column of interest
+			col = i;
+			if(typeof target_data == 'undefined')
+				break;
 		}
 		//get the columns # of target_data
 		//more efficient to create a dict -> reference the dict? Instead of checking everytime the method is called?
-		if(target_data.indexOf(header[i]) > -1)
+		if(typeof target_data == 'object' && target_data.indexOf(header[i]) > -1){
 			target_data_col.push(i);
+		}
 	}
 	console.log(target_data_col)
 
@@ -44,11 +45,12 @@ function access(target_col, target_item, target_data){
 		if(rows[i][col] == target_item){//at the target row
 			var information_row = [target_item]
 			for(c in rows[i]){
-				if(target_data_col.indexOf(c) > -1){
-					//order of info is the same as the target_data
-					//better to make a dictionary?
-					information_row.push(rows[i][c].split("|")[1]);
-					//pipes are removed
+				// should impliment a dictionary instead?
+				if(typeof target_data == 'object' && target_data_col.indexOf(c) > -1){
+					information_row.push(rows[i][c].split("|")[1]);//pipes are removed
+				}
+				if(typeof target_data == 'undefined' && rows[i][c] != '||'){
+					information_row.push(rows[i][c].split("|")[1]);//pipes are removed
 				}
 			}
 			information.push(information_row);
@@ -56,10 +58,6 @@ function access(target_col, target_item, target_data){
 		}
 	}
 	return information;
-}
-
-function access_all(target_col, target_item){
-	//this method is similar to access, but gets all data that's not empty
 }
 
 function visualize_Pocket(){
@@ -86,6 +84,10 @@ function visualize_ISS(){
 		var date = r[i][1];
 		console.log(convertDate(date))
 	}
+	console.log('access_all')
+	var r = access(target_col, target_item);
+	console.log(target_item);
+	console.log(r);
 }
 
 //why is datetime not in ISO8601 compatable format??
