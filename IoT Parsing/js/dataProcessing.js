@@ -7,8 +7,9 @@ oReq.open("GET", "data/datadrop_output.csv", true);
 oReq.send();
 
 
-var results = []
-//What to do about the pipes?
+var results = {};
+var results_user = {}
+
 function papaParser(file){
 	Papa.parse(file, {
 		complete: function(data) {
@@ -20,6 +21,27 @@ function papaParser(file){
 		}
 	});
 }
+
+function scopeToUser(user){
+	var header = results.data[0];
+	var actor_col = 0;
+	for(i in header){
+		if(header[i] == 'actor'){
+			actor_col = i;
+			break;
+		}
+	}
+	var results = [];
+	var rows = results.data;
+	for(i in rows){
+		if(rows[i][actor_col] == user){
+			results.push(rows[i])
+		}
+	}
+	results_user.data = results;
+	//might want to return -> then can override results with one that is scoped
+}
+
 //adjust for specific user
 function access(target_col, target_item, target_data){
 	//iff target_data is null, the first row is the headers
