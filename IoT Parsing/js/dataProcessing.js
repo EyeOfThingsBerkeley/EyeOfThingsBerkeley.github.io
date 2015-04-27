@@ -3,7 +3,7 @@
 var oReq = new XMLHttpRequest();
 //Method below gets execured onload
 oReq.onload = function(){ papaParser(this.responseText); };
-oReq.open("GET", "data/DataDrop_Output_2.csv", true);
+oReq.open("GET", "data/datadrop_output.csv", true);
 oReq.send();
 
 
@@ -20,18 +20,22 @@ function papaParser(file){
 		}
 	});
 }
-
+//adjust for specific user
 function access(target_col, target_item, target_data){
 	//iff target_data is null, the first row is the headers
 
-	var header = results.data[0];
+	//var actor = 'actor';
+	//var actor_col = 0; //col where the actor is in
+	var header = results.data[0]; //header is the 0th row
 	var col = 0;
 	var target_data_col = []
 	for(i in header){
 		if(header[i] == target_col){
 			col = i;
-			if(typeof target_data == 'undefined')
+			if(typeof target_data == 'undefined'){
 				break;
+				//otherwise will search of the target columns
+			}
 		}
 		//get the columns # of target_data
 		//more efficient to create a dict -> reference the dict? Instead of checking everytime the method is called?
@@ -50,13 +54,13 @@ function access(target_col, target_item, target_data){
 			for(c in rows[i]){
 				// should impliment a dictionary instead?
 				if(typeof target_data == 'object' && target_data_col.indexOf(c) > -1){
-					information_row.push(rows[i][c].split("|")[1]);//pipes are removed
+					information_row.push(rows[i][c]);//pipes are removed
 				}
-				if(typeof target_data == 'undefined' && rows[i][c] != '||'){
+				if(typeof target_data == 'undefined' && rows[i][c] != ''){
 					if(information.length == 0){// creating the headers
 						headers.push(rows[0][c])
 					}
-					information_row.push(rows[i][c].split("|")[1]);//pipes are removed
+					information_row.push(rows[i][c]);//pipes are removed
 				}
 			}
 			if(information.length == 0 && typeof target_data == 'undefined')// adding headers
@@ -81,33 +85,40 @@ function getCol(target_col){
 	var activies = [];
 	for(var i = 1; i < rows.length; i++){
 		var cell = rows[i][col];
-		if(cell != '||' && typeof(cell) != 'undefined' && activies.indexOf(cell) == -1){
+		if(cell != '' && typeof(cell) != 'undefined' && activies.indexOf(cell) == -1){
 			activies.push(cell)
 		}
 	}
 	console.log(activies);
 }
 function getActivies(){
-	return getCol('|activity_type |');
+	return getCol('activity_type');
 }
 
 function visualize_Pocket(){
-	var target_col = '|activity_type |';
-	var target_item = '|pocket|';
-	var target_data = ['|change value1 |', '|excerpttagsurl|', '|target_displayname|', '|titleexcerpttagsurl|'];
+	var target_col = 'activity_type';
+	var target_item = 'pocket';
+	var target_data = ['excerpt', 'tags', 'tagsurl', 'title', 'timestamp'];
 	var r = access(target_col, target_item, target_data);
 	console.log(target_item);
 	console.log(r);
 	for(i in r){
-		var date = r[i][1];
+		var date = r[i][4];
 		//console.log(convertDate(date));
 	}
+
+	console.log('access_all')
+	var target_col = 'activity_type';
+	var target_item = 'pocket'
+	var r = access(target_col, target_item);
+	console.log(target_item);
+	console.log(r);
 }
 
 function visualize_ISS(){
 	console.log('access_all')
-	var target_col = '|activity_type |';
-	var target_item = '|iss|'
+	var target_col = 'activity_type';
+	var target_item = 'iss'
 	var r = access(target_col, target_item);
 	console.log(target_item);
 	console.log(r);
