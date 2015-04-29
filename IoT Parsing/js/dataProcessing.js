@@ -3,7 +3,7 @@
 var oReq = new XMLHttpRequest();
 //Method below gets execured onload
 oReq.onload = function(){ papaParser(this.responseText); };
-oReq.open("GET", "data/datadrop_output.csv", true);
+oReq.open("GET", "data/datadrop_output_with_weather.csv", true); //loots of columns....actor vs actor_displayname
 oReq.send();
 
 
@@ -15,30 +15,36 @@ function papaParser(file){
 		complete: function(data) {
 			console.log(data);
 			results = data;//better to reference a global or keeping on passing around?
-			visualize_Pocket();
-			visualize_ISS();
+			get_Pocket();
+			get_ISS();
 			getActivies();
+			scopeToUser('Colin');
 		}
 	});
 }
 
-function scopeToUser(user){
+function scope(colName, param){
 	var header = results.data[0];
 	var actor_col = 0;
 	for(i in header){
-		if(header[i] == 'actor'){
+		if(header[i] == colName){
 			actor_col = i;
 			break;
 		}
 	}
-	var results = [];
+	var scopedInfo = [];
 	var rows = results.data;
 	for(i in rows){
-		if(rows[i][actor_col] == user){
-			results.push(rows[i])
+		if(rows[i][actor_col] == param){
+			scopedInfo.push(rows[i])
 		}
 	}
-	results_user.data = results;
+	console.log(scopedInfo);
+	return results;
+}
+
+function scopeToUser(user){
+	results_user.data = scope('actor', user);
 	//might want to return -> then can override results with one that is scoped
 }
 
@@ -95,6 +101,7 @@ function access(target_col, target_item, target_data){
 }
 
 function getCol(target_col){
+	//extracts the items that are in the column
 	var header = results.data[0];
 	var col = 0;
 	for(i in header){
@@ -117,7 +124,7 @@ function getActivies(){
 	return getCol('activity_type');
 }
 
-function visualize_Pocket(){
+function get_Pocket(){
 	var target_col = 'activity_type';
 	var target_item = 'pocket';
 	var target_data = ['excerpt', 'tags', 'tagsurl', 'title', 'timestamp'];
@@ -137,7 +144,7 @@ function visualize_Pocket(){
 	console.log(r);
 }
 
-function visualize_ISS(){
+function get_ISS(){
 	console.log('access_all')
 	var target_col = 'activity_type';
 	var target_item = 'iss'
