@@ -18,33 +18,37 @@ function papaParser(file){
 			get_Pocket();
 			get_ISS();
 			getActivies();
-			scopeToUser('Colin');
+			results_user.data = scopeToUser('Colin');
+			var weatherScopedResults = scopeToUser('weather')
+			console.log(getCol(weatherScopedResults, 'timestamp'));
 		}
 	});
 }
 
-function scope(colName, param){
-	var header = results.data[0];
+function scope(data_array, colName, param){
+	console.log("scope - " + colName + " : " + param)
+	var header = data_array.data[0];
 	var actor_col = 0;
 	for(i in header){
-		if(header[i] == colName){
+		if(header[i].toLowerCase() == colName.toLowerCase()){
 			actor_col = i;
 			break;
 		}
 	}
-	var scopedInfo = [];
-	var rows = results.data;
+	var scopedInfo = [data_array.data[0]];
+	var rows = data_array.data;
 	for(i in rows){
-		if(rows[i][actor_col] == param){
+		var cell = typeof rows[i][actor_col] != 'undefined' ? rows[i][actor_col].toLowerCase() : rows[i][actor_col];
+		if(cell == param.toLowerCase()){
 			scopedInfo.push(rows[i])
 		}
 	}
 	console.log(scopedInfo);
-	return results;
+	return scopedInfo;
 }
 
 function scopeToUser(user){
-	results_user.data = scope('actor', user);
+	return scope(results, 'actor', user);
 	//might want to return -> then can override results with one that is scoped
 }
 
@@ -58,7 +62,7 @@ function access(target_col, target_item, target_data){
 	var col = 0;
 	var target_data_col = []
 	for(i in header){
-		if(header[i] == target_col){
+		if(header[i].toLowerCase() == target_col.toLowerCase()){
 			col = i;
 			if(typeof target_data == 'undefined'){
 				break;
@@ -76,7 +80,8 @@ function access(target_col, target_item, target_data){
 	var rows = results.data;
 	var information = [];
 	for(i in rows){
-		if(rows[i][col] == target_item){//at the target row
+		var cell = typeof rows[i][col] != 'undefined' ? rows[i][col].toLowerCase() : rows[i][col];
+		if(cell == target_item.toLowerCase()){//at the target row
 			var information_row = [target_item]
 			var headers = [target_col];
 			for(c in rows[i]){
@@ -100,17 +105,17 @@ function access(target_col, target_item, target_data){
 	return information;
 }
 
-function getCol(target_col){
+function getCol(results, target_col){
 	//extracts the items that are in the column
-	var header = results.data[0];
+	var header = results[0];
 	var col = 0;
 	for(i in header){
-		if(header[i] == target_col){
+		if(header[i].toLowerCase() == target_col.toLowerCase()){
 			col = i;
 			break;
 		}
 	}
-	var rows = results.data;
+	var rows = results;
 	var activies = [];
 	for(var i = 1; i < rows.length; i++){
 		var cell = rows[i][col];
@@ -118,10 +123,11 @@ function getCol(target_col){
 			activies.push(cell)
 		}
 	}
-	console.log(activies);
+	//console.log(activies);
+	return activies;
 }
 function getActivies(){
-	return getCol('activity_type');
+	return getCol(results.data,'activity_type');
 }
 
 function get_Pocket(){
@@ -151,6 +157,12 @@ function get_ISS(){
 	var r = access(target_col, target_item);
 	console.log(target_item);
 	console.log(r);
+
+	//using the getCol to access all the data in a specific column
+	var times = getCol(r, 'timestamp');
+	for(x in times){
+		console.log( convertDate(times[x]) );
+	}
 }
 
 //why is datetime not in ISO8601 compatable format??
