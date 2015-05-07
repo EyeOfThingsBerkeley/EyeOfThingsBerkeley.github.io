@@ -15,7 +15,7 @@ function papaParser(file){
 		complete: function(data) {
 			console.log(data);
 			results = data;//better to reference a global or keeping on passing around?
-			get_Pocket();
+			/*get_Pocket();
 			get_ISS();
 			getActivies();
 
@@ -25,10 +25,36 @@ function papaParser(file){
 			
 
 			//is it better to scope? or use the access method??
-			var saleScopedResults = getSale()
-			drawSale(saleScopedResults)
+			var saleScopedResults = getSale();
+			drawSale(saleScopedResults);
 		
-			console.log(getColOnce(results.data, 'activity_type'));
+			console.log(getColOnce(results.data, 'activity_type'));			
+			console.log(getColOnce(results.data, 'actor_displayname'));
+			console.log(getColOnce(access('actor','colin'), 'activity_type'));*/
+
+			var colin_data = access('actor','colin')
+			console.log(colin_data)
+			var colin_data_scope = scopeToUser('colin')
+
+			var colin_activities = getColOnce(colin_data, 'activity_type')
+			console.log(colin_activities)
+			//object with all the keys.
+			for(activity in colin_activities){
+				//console.log(activity) // .replace(/ /g,'')
+				var colinDataScopedToActivity = accessWithData(colin_data_scope, 'activity_type', activity)
+				//console.log(colinDataScopedToActivity)
+				//issues with the headers, problem when use access it cuts the headers....
+
+				var timeArray = getCol(colinDataScopedToActivity, 'timestamp');
+				var valArray = Array(timeArray.length + 1).join('1250,').split(',');
+				valArray.pop()
+				var obj = {'time': timeArray, 'value': valArray, 'activity': activity}
+				console.log(obj)
+				/*console.log(timeArray)
+				console.log(valArray)
+				console.log(activity)*/
+			}
+
 		}
 	});
 }
@@ -126,11 +152,14 @@ function scopeToUser(user){
 
 //adjust for specific user
 function access(target_col, target_item, target_data){
+	return accessWithData(results.data ,target_col, target_item, target_data)
+}
+function accessWithData(results, target_col, target_item, target_data){
 	//iff target_data is null, the first row is the headers
 
 	//var actor = 'actor';
 	//var actor_col = 0; //col where the actor is in
-	var header = results.data[0]; //header is the 0th row
+	var header = results[0]; //header is the 0th row
 	var col = 0;
 	var target_data_col = []
 	for(i in header){
@@ -149,7 +178,7 @@ function access(target_col, target_item, target_data){
 		}
 	}
 	//going through the individual rows to extract necessary data
-	var rows = results.data;
+	var rows = results;
 	var information = [];
 	for(i in rows){
 		var cell = typeof rows[i][col] != 'undefined' ? rows[i][col].toLowerCase() : rows[i][col];
@@ -214,13 +243,11 @@ function getColOnce(results, target_col){
 	var activies = {}
 	for(var i = 1; i < rows.length; i++){
 		var cell = rows[i][col];
-		if(cell != '' && typeof(cell) != 'undefined'){
-			if(cell in activies){
-				activies[cell] += 1; 
-			}
-			else{
-				activies[cell] = 1;
-			}
+		if(cell in activies){
+			activies[cell] += 1; 
+		}
+		else{
+			activies[cell] = 1;
 		}
 	}
 	return activies;
