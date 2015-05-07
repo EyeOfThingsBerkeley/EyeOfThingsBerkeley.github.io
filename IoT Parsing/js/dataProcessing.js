@@ -18,11 +18,56 @@ function papaParser(file){
 			get_Pocket();
 			get_ISS();
 			getActivies();
+
 			results_user.data = scopeToUser('Colin');
 			var weatherScopedResults = scopeToUser('weather')
 			drawWeather(weatherScopedResults);
+			
+
+			//is it better to scope? or use the access method??
+			var saleScopedResults = getSale()
+			drawSale(saleScopedResults)
+			
 		}
 	});
+}
+
+function getSale(){
+	var target_col = 'activity_type';
+	var target_item = 'item for sale'
+	var r = access(target_col, target_item);
+
+	console.log(r)
+	return r;
+}
+
+function drawSale(data){
+	var time = getCol(data, 'timestamp');
+	var value = getCol(data, 'value2');
+	var data = [];
+	for(i in time){
+		var t = isNaN(convertDate(time[i])) ? '' : convertDate(time[i]);
+		if(t != ''){
+			data.push({'Time':time[i], 'Cost': value[i].replace(/\D/g,'')/100});
+			//cost is stipped of non digits and divided by 100 (to get back decimal)
+		}
+	}
+
+	//how to use datetime for dimple? 
+	var w = 1000
+	var h = 500;
+	var svg = dimple.newSvg("#chartContainerSale", w, h);
+  var myChart = new dimple.chart(svg, data);
+  myChart.setBounds(60, 30, w-120, h-150)
+  var x = myChart.addCategoryAxis("x", "Time");
+  x.addOrderRule("Date");
+  //fix the date format
+  x.tickFormat = '%d:%H:%M';
+  var y = myChart.addMeasureAxis("y", "Cost");
+  y.ticks = 20;
+  myChart.addSeries("Best Buy Products", dimple.plot.bubble);
+  myChart.addLegend(180, 10, 360, 20, "right");
+  myChart.draw();
 }
 
 function drawWeather(data){
@@ -33,7 +78,7 @@ function drawWeather(data){
 		var t = isNaN(convertDate(time[i])) ? '' : convertDate(time[i]);
 		if(t != ''){
 			data.push({'Time':time[i], 'Temperature': parseInt(value[i])});
-			console.log(t + " : " + time[i] + " : " + value[i]);
+			//console.log(t + " : " + time[i] + " : " + value[i]);
 		}
 	}
 
@@ -70,7 +115,6 @@ function scope(data_array, colName, param){
 			scopedInfo.push(rows[i])
 		}
 	}
-	console.log(scopedInfo);
 	return scopedInfo;
 }
 
@@ -189,7 +233,7 @@ function get_ISS(){
 	//using the getCol to access all the data in a specific column
 	var times = getCol(r, 'timestamp');
 	for(x in times){
-		console.log( convertDate(times[x]) );
+		//console.log( convertDate(times[x]) );
 	}
 }
 
