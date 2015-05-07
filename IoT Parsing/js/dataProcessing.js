@@ -20,9 +20,36 @@ function papaParser(file){
 			getActivies();
 			results_user.data = scopeToUser('Colin');
 			var weatherScopedResults = scopeToUser('weather')
-			console.log(getCol(weatherScopedResults, 'timestamp'));
+			drawWeather(weatherScopedResults);
 		}
 	});
+}
+
+function drawWeather(data){
+	var time = getCol(data, 'timestamp');
+	var value = getCol(data, 'value3');
+	var data = [];
+	for(i in time){
+		var t = isNaN(convertDate(time[i])) ? '' : convertDate(time[i]);
+		if(t != ''){
+			data.push({'Time':time[i], 'Temperature': parseInt(value[i])});
+			console.log(t + " : " + time[i] + " : " + value[i]);
+		}
+	}
+
+	//how to use datetime for dimple? 
+	var w = 1000
+	var h = 500;
+	var svg = dimple.newSvg("#chartContainer", w, h);
+  var myChart = new dimple.chart(svg, data);
+  myChart.setBounds(60, 30, w-120, h-60)
+  var x = myChart.addCategoryAxis("x", "Time");
+  x.ticks = 100;
+  x.addOrderRule("Date");
+  var y = myChart.addMeasureAxis("y", "Temperature");
+  myChart.addSeries("Temp", dimple.plot.bubble);
+  myChart.addLegend(180, 10, 360, 20, "right");
+  myChart.draw();
 }
 
 function scope(data_array, colName, param){
@@ -119,9 +146,10 @@ function getCol(results, target_col){
 	var activies = [];
 	for(var i = 1; i < rows.length; i++){
 		var cell = rows[i][col];
-		if(cell != '' && typeof(cell) != 'undefined' && activies.indexOf(cell) == -1){
+		//why have no repeats 'if' below
+		//if(cell != '' && typeof(cell) != 'undefined' && activies.indexOf(cell) == -1){
 			activies.push(cell)
-		}
+		//}
 	}
 	//console.log(activies);
 	return activies;
