@@ -1,0 +1,42 @@
+(dp1
+S' weather value_type = fahrenheit value = 62'
+p2
+S'NaN'
+p3
+sS' stock market'
+p4
+S'Colin'
+p5
+sS'iss'
+p6
+S'Colin'
+p7
+sS'pocket'
+p8
+S'Colin'
+p9
+sS' weather value_type = fahrenheit value = 52'
+p10
+S'NaN'
+p11
+sS' weather value_type = fahrenheit value = 51'
+p12
+S'NaN'
+p13
+sS' sunset'
+p14
+S'Colin'
+p15
+sS' weather value_type = fahrenheit value = 55'
+p16
+S'NaN'
+p17
+sS' weather'
+p18
+S'Colin'
+p19
+sS'3Dpocket'
+p20
+S'Colin'
+p21
+s.
