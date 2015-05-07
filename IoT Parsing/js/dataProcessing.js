@@ -27,7 +27,8 @@ function papaParser(file){
 			//is it better to scope? or use the access method??
 			var saleScopedResults = getSale()
 			drawSale(saleScopedResults)
-			
+		
+			console.log(getColOnce(results.data, 'activity_type'));
 		}
 	});
 }
@@ -62,7 +63,7 @@ function drawSale(data){
   var x = myChart.addCategoryAxis("x", "Time");
   x.addOrderRule("Date");
   //fix the date format
-  x.tickFormat = '%d:%H:%M';
+  //x.tickFormat = '%d:%H:%M';
   var y = myChart.addMeasureAxis("y", "Cost");
   y.ticks = 20;
   myChart.addSeries("Best Buy Products", dimple.plot.bubble);
@@ -176,6 +177,7 @@ function access(target_col, target_item, target_data){
 	return information;
 }
 
+//takes in an 2d array of data + the target column
 function getCol(results, target_col){
 	//extracts the items that are in the column
 	var header = results[0];
@@ -195,7 +197,32 @@ function getCol(results, target_col){
 			activies.push(cell)
 		//}
 	}
-	//console.log(activies);
+	return activies;
+}
+function getColOnce(results, target_col){
+	//extracts the items that are in the column
+	var header = results[0];
+	var col = 0;
+	for(i in header){
+		if(header[i].toLowerCase() == target_col.toLowerCase()){
+			col = i;
+			console.log(col)
+			break;
+		}
+	}
+	var rows = results;
+	var activies = {}
+	for(var i = 1; i < rows.length; i++){
+		var cell = rows[i][col];
+		if(cell != '' && typeof(cell) != 'undefined'){
+			if(cell in activies){
+				activies[cell] += 1; 
+			}
+			else{
+				activies[cell] = 1;
+			}
+		}
+	}
 	return activies;
 }
 function getActivies(){
