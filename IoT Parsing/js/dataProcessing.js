@@ -27,12 +27,61 @@ function papaParser(file){
 			//is it better to scope? or use the access method??
 			var saleScopedResults = getSale();
 			drawSale(saleScopedResults);
+			
+			getAllUserData('colin');
 
-			getAllUserData('colin')
+			visualiseOtherTeamData();
 		}
 	});
 }
 
+function visualiseOtherTeamData(){
+	var otherActivities = getColOnce(results.data, 'actor_displayname');
+	console.log(otherActivities)
+
+	for(activity in otherActivities){
+		var scopedToActivity = accessWithData(results.data, 'actor_displayname', activity)
+
+		var timeArray = getCol(scopedToActivity, 'timestamp');
+		var valArray = Array(timeArray.length + 1).join('1250,').split(',');
+		valArray.pop();
+
+		var toGraphColinFormat = [];
+		var toGraphDimpleFormat = [];
+		for(i in timeArray){
+			toGraphColinFormat.push({
+				'time': timeArray[i],
+				'event': valArray[i],
+				'activity': activity
+			})
+			if(typeof timeArray[i] != 'undefined' && typeof valArray[i] != 'undefined')
+				toGraphDimpleFormat.push({
+					'Time':timeArray[i], 
+					'Value': 0
+				})
+		}
+		console.log(activity)
+		console.log(toGraphColinFormat);
+		try{
+			graphOthers(toGraphDimpleFormat, activity);
+		}catch(e){console.log(e)};
+	}
+
+	function graphOthers(data, title){
+		var w = 1000
+		var h = 150;
+		var svg = dimple.newSvg(".container", w, h);
+	  var myChart = new dimple.chart(svg, data);
+	  myChart.setBounds(60, 30, w-120, h-100)
+	  var x = myChart.addCategoryAxis("x", "Time");
+	  x.addOrderRule("Date");
+	  var y = myChart.addMeasureAxis("y", "Value");
+	  y.ticks = 20;
+	  myChart.addSeries(title, dimple.plot.bubble);
+	  myChart.addLegend(180, 10, 360, 20, "right");
+	  myChart.draw();
+	}
+}
 
 //Prints objects scoped with user information grouped by activity type
 function getAllUserData(user){
@@ -54,7 +103,7 @@ function getAllUserData(user){
 
 		var toGraph = [];
 		for(i in timeArray){
-			console.log("{time:'" + timeArray[i] + "',event:" + valArray[i] + ",activity:'"+activity+"'}");
+			//console.log("{time:'" + timeArray[i] + "',event:" + valArray[i] + ",activity:'"+activity+"'}");
 			toGraph.push({
 				'time': timeArray[i],
 				'event': valArray[i],
