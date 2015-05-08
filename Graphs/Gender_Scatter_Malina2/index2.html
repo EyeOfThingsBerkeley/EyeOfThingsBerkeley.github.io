@@ -104,7 +104,7 @@
             //             .append("svg")
             //             .attr("width", w)
             //             .attr("height", h);
-        function makeGraphs(hasAxis){
+        function makeGraphs(hasAxis, data_in, old_max, old_min){
             function startGraphic(w,h,margin,svg) {
 
               //Small functoin that allows to set defaults for values easily
@@ -133,15 +133,30 @@
             //load data from external JSON file
             // d3.json("data/gender_pay_2013.json", function (gender_pay) {
 
-            d3.json("data/gender_pay_all.json", function (gender_pay) {
+            //d3.json(data_in, function (event_show) {
+            
+            //Process data
+            data_in.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
+            
+            var xMin = d3.min(data_in, function(d){ return Math.min(d.time); });
+            var xMax = d3.max(data_in, function(d){ return Math.max(d.time); });
+            if (old_max !== false){
+                if (old_min < xMin){
+                    xMin = old_min}
+                if (old_max > xMax){
+                    xMax = old_max}
+            }
+            console.log(data_in)
+            var timeFormat = d3.time.format("%I:%M %p %m/%d");
 
             // padding
             var padding = 80;
 
             //Create scales for X and Y axes
-            var xScale = d3.scale.linear()
-                 .domain([0, 2500])
-                 .range([margin.left, w - margin.right]);
+            var xScale = d3.time.scale()
+                .domain([xMin, xMax])
+                .range([margin.left, w - margin.right]);
+
 
             var yScale = d3.scale.linear()
                      .domain([0, 2500])
@@ -153,7 +168,8 @@
                   .scale(xScale)
                   .orient("bottom")
                   .ticks(5)
-                  .tickFormat(function(d) { return "$" + commasFormatter(d); }); //format as $, with commas for thousands
+                  .tickFormat(timeFormat);
+                  //.tickFormat(function(d) { return "$" + commasFormatter(d); }); //format as $, with commas for thousands
             var emptyAxis = d3.svg.axis()
                   .scale(xScale)
                   .orient("bottom")
@@ -164,8 +180,8 @@
             var yAxis = d3.svg.axis()
                   .scale(yScale)
                   .orient("left")
-                  .ticks(5)
-                  .tickFormat(function(d) { return "$" + commasFormatter(d); }); //format as $, with commas for thousands
+                  .ticks(5);
+                  //.tickFormat(function(d) { return "$" + commasFormatter(d); }); //format as $, with commas for thousands
 
             function make_x_axis() {
                   return d3.svg.axis()
@@ -217,8 +233,8 @@
 
 // add equal pay line
     svg.append("line")
-        .attr("x1", xScale(0))
-        .attr("x2", xScale(2500))
+        .attr("x1", xScale(xMin))
+        .attr("x2", xScale(xMax))
         .attr("y1", yScale(1250))
         .attr("y2", yScale(1250))
         .style("stroke", "gray")
@@ -273,18 +289,21 @@
 
 
      //add circles
+            //data_in['event'] = data_in['event'].map(Number)
+            //data_in['time'] = data_in['time'].map(Number)
+            //parse = d3.time.format("%d-%m-%Y-%H-%M").parse
                 svg.selectAll("circle")
-                    .data(gender_pay.filter(function (d) { return (d.year==2012); })) //filter to display just data for 2012
+                    .data(data_in) //filter to display just data for 2012 .filter(function (d) { return (d.year==2015); })
                     .enter()
                     .append("circle")
                     .attr("class", "circle")
-                    .attr("cx", function (d) { return xScale(d.m_salary); })
-                    .attr("cy", function (d) { return yScale(d.w_salary); })
+                    .attr("cx", function (d) { return xScale(d.time); })
+                    .attr("cy", function (d) { return yScale(d.event);})  //yScale(d.event)
                     .attr("r", 5) //removed function to handle nulls, as they are no longer present
-                    .attr("fill", function(d) { return d.color = color(d.type); })
+                    .attr("fill", function(d) { return d.color = color(d.event); })
                     .attr("opacity", 0.5)
                     .on("mouseover", function(d) {
-                        tooltip.html(d.occupation)
+                        tooltip.html(d.activity)
                             .style("visibility", "visible")
                             .style("left", (d3.event.pageX + 10) + "px")
                                .style("top", (d3.event.pageY + 10) + "px");
@@ -353,14 +372,68 @@
                     //         .text("2013")
                     // });
 
-  });
+  //});
+                return [xMax, xMin]
 };
 
-makeGraphs(false);
-makeGraphs(false);
-makeGraphs(false);
-makeGraphs(true);
+var data =  [{time:'Thu 9 Apr 2015 20:30:09 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sat 11 Apr 2015 20:57:25 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sun 12 Apr 2015 19:46:30 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Mon 13 Apr 2015 21:56:24 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Tue 14 Apr 2015 19:24:33 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Wed 15 Apr 2015 17:38:50 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Thu 16 Apr 2015 15:52:27 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Fri 17 Apr 2015 16:18:38 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sat 18 Apr 2015 20:37:42 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sun 19 Apr 2015 20:57:06 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Mon 20 Apr 2015 21:28:47 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Wed 22 Apr 2015 20:55:32 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Thu 23 Apr 2015 20:43:03 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Fri 24 Apr 2015 19:47:07 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sat 25 Apr 2015 22:58:24 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sun 26 Apr 2015 19:32:38 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Mon 27 Apr 2015 17:00:44 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Tue 28 Apr 2015 22:37:18 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Wed 29 Apr 2015 20:41:16 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Thu 30 Apr 2015 16:47:44 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Fri 1 May 2015 15:36:15 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sat 2 May 2015 20:00:41 GMT +0',event:1250,activity:' weather rises'},
+ {time:'Sun 3 May 2015 20:57:00 GMT +0',event:1250,activity:' weather rises'}]
+    
+    //[{'time':"Thu 9 Apr 2015 19:14:30 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Mon 13 Apr 2015 14:46:49 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Wed 15 Apr 2015 16:54:25 GMT +0", 'event':1250, 'activity':'test'}]
 
+var data1 = [{'time':"Thu 9 Apr 2015 19:14:30 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Mon 13 Apr 2015 14:46:49 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Wed 15 Apr 2015 16:54:25 GMT +0", 'event':1250, 'activity':'test'}]
+
+var data2 = [{'time':"Thu 9 Apr 2015 19:14:30 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Mon 13 Apr 2015 14:46:49 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Wed 15 Apr 2015 16:54:25 GMT +0", 'event':1250, 'activity':'test'}]
+
+var data3 = [{'time':"Thu 9 Apr 2015 19:14:30 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Mon 13 Apr 2015 14:46:49 GMT +0", 'event':1250, 'activity':'test'}, {'time':"Wed 15 Apr 2015 16:54:25 GMT +0", 'event':1250, 'activity':'test'}]
+    
+//'09-04-2015-19-14' '13-04-2015-4-46'  '15-04-2015-16-54'
+
+    //{'time':["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],'event':["1250", "1250", "1250", "1250", "1250", "1250", "1250", "1250", "1250", "1250", "1250", "1250"], 'activity':'test'}
+
+//["Thu 9 Apr 2015 19:14:30 GMT +0", "Mon 13 Apr 2015 14:46:49 GMT +0", "Wed 15 Apr 2015 16:54:25 GMT +0", "Thu 16 Apr 2015 15:53:46 GMT +0", "Mon 20 Apr 2015 14:12:28 GMT +0", "Tue 21 Apr 2015 14:11:04 GMT +0", "Thu 23 Apr 2015 15:40:08 GMT +0", "Mon 27 Apr 2015 13:55:25 GMT +0", "Tue 28 Apr 2015 16:33:37 GMT +0", "Wed 29 Apr 2015 14:05:11 GMT +0", "Thu 30 Apr 2015 15:59:09 GMT +0", "Fri 1 May 2015 14:02:32 GMT +0"]
+var old_max = false
+var old_min = false
+result = makeGraphs(false, data,old_max, old_min);
+old_max = result[0]
+old_min = result[1]
+console.log(old_max, old_min)
+result = makeGraphs(false, data1,old_max, old_min);
+old_max = result[0]
+old_min = result[1]
+console.log(old_max, old_min)
+result = makeGraphs(false, data2,old_max, old_min);
+old_max = result[0]
+old_min = result[1]
+console.log(old_max, old_min)
+result = makeGraphs(true, data3,old_max, old_min);
+old_max = result[0]
+old_min = result[1]
+console.log(old_max, old_min)
+
+
+        
     </script>
 
 </html>
