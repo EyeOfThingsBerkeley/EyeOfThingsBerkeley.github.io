@@ -15,7 +15,7 @@ function papaParser(file){
 		complete: function(data) {
 			console.log(data);
 			results = data;//better to reference a global or keeping on passing around?
-			/*get_Pocket();
+			get_Pocket();
 			get_ISS();
 			getActivies();
 
@@ -27,36 +27,46 @@ function papaParser(file){
 			//is it better to scope? or use the access method??
 			var saleScopedResults = getSale();
 			drawSale(saleScopedResults);
-		
-			console.log(getColOnce(results.data, 'activity_type'));			
-			console.log(getColOnce(results.data, 'actor_displayname'));
-			console.log(getColOnce(access('actor','colin'), 'activity_type'));*/
 
-			var colin_data = access('actor','colin')
-			console.log(colin_data)
-			var colin_data_scope = scopeToUser('colin')
-
-			var colin_activities = getColOnce(colin_data, 'activity_type')
-			console.log(colin_activities)
-			//object with all the keys.
-			for(activity in colin_activities){
-				//console.log(activity) // .replace(/ /g,'')
-				var colinDataScopedToActivity = accessWithData(colin_data_scope, 'activity_type', activity)
-				//console.log(colinDataScopedToActivity)
-				//issues with the headers, problem when use access it cuts the headers....
-
-				var timeArray = getCol(colinDataScopedToActivity, 'timestamp');
-				var valArray = Array(timeArray.length + 1).join('1250,').split(',');
-				valArray.pop()
-				var obj = {'time': timeArray, 'value': valArray, 'activity': activity}
-				console.log(obj)
-				/*console.log(timeArray)
-				console.log(valArray)
-				console.log(activity)*/
-			}
-
+			getAllUserData('colin')
 		}
 	});
+}
+
+
+//Prints objects scoped with user information grouped by activity type
+function getAllUserData(user){
+	var colin_data = access('actor',user)
+	console.log(colin_data)
+	var colin_data_scope = scopeToUser(user)
+
+	var colin_activities = getColOnce(colin_data, 'activity_type')
+	console.log(colin_activities)
+	//object with all the keys.
+	for(activity in colin_activities){
+		var colinDataScopedToActivity = accessWithData(colin_data_scope, 'activity_type', activity)
+
+		var timeArray = getCol(colinDataScopedToActivity, 'timestamp');
+		var valArray = Array(timeArray.length + 1).join('1250,').split(',');
+		valArray.pop()
+		//var obj = {'time': timeArray, 'value': valArray, 'activity': activity}
+		//console.log(obj)
+
+		var toGraph = [];
+		for(i in timeArray){
+			console.log("{time:'" + timeArray[i] + "',event:" + valArray[i] + ",activity:'"+activity+"'}");
+			toGraph.push({
+				'time': timeArray[i],
+				'event': valArray[i],
+				'activity': activity
+			})
+		}
+		console.log(toGraph);
+
+		/*console.log(timeArray)
+		console.log(valArray)
+		console.log(activity)*/
+	}
 }
 
 function getSale(){
