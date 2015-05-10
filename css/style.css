@@ -1,0 +1,63 @@
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #ccc;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: arial;
+  font-size: 12px;
+}
+
+
+.tooltip {
+  position: absolute;
+  font-family: arial;
+  font-size: 12px;
+  padding: 5px;
+  width: 120px;
+  background-color:rgba(255, 255, 255, 0.5);
+  color: #000;
+  border-radius: 2px;
+  visibility: hidden;
+}
+
+.label {
+  font-weight: bold;
+}
+
+circle:hover {
+  opacity: 1;
+  stroke: black;
+  stroke-width: 1;
+}
+
+#select {
+  position: absolute;
+  font-family: arial;
+  top: 20px;
+  left: 90px;
+}
+#y2012 {
+  position: relative;
+  left: 20px;
+}
+#y2013 {
+   position: relative;
+  left: 60px;
+}
+#yLabel {
+  font-size: 30px;
+  font-family: arial;
+  font-weight: bold;
+  fill: #ccc;
+}
+
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.7;
+}
+.grid path {
+    stroke-width: 0;
+}
