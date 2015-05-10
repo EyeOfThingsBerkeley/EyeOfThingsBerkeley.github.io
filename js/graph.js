@@ -1,4 +1,16 @@
-        function makeGraphs(hasAxis, data_in, old_max, old_min){
+
+            // //Width and height
+            // var w = 500;
+            // var h = 500;
+
+
+            // //Create SVG element
+            // var svg = d3.select("#chart")
+            //             .append("svg")
+            //             .attr("width", w)
+            //             .attr("height", h);
+        //data_in, old_max, old_min, col_num
+        function makeGraphs(hasAxis, data_in){
             function startGraphic(w,h,margin,svg) {
 
               //Small functoin that allows to set defaults for values easily
@@ -17,7 +29,7 @@
 
              }
 
-            start=startGraphic(800,100,{ top: 20, right: 0, bottom: 0, left: 100 });
+            start=startGraphic(800,500,{ top: 20, right: 0, bottom: 0, left: 100 });
 
             var svg = start['svg'];
             var margin = start['margin'];
@@ -28,18 +40,18 @@
             // d3.json("data/gender_pay_2013.json", function (gender_pay) {
 
             //d3.json(data_in, function (event_show) {
-            
+
             //Process data
             data_in.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-            
+
             var xMin = d3.min(data_in, function(d){ return Math.min(d.time); });
             var xMax = d3.max(data_in, function(d){ return Math.max(d.time); });
-            if (old_max !== false){
-                if (old_min < xMin){
-                    xMin = old_min}
-                if (old_max > xMax){
-                    xMax = old_max}
-            }
+//            if (old_max !== false){
+//                if (old_min < xMin){
+//                    xMin = old_min}
+//                if (old_max > xMax){
+//                    xMax = old_max}
+//            }
             console.log(data_in)
             var timeFormat = d3.time.format("%I:%M %p %m/%d");
 
@@ -125,12 +137,44 @@
                 //     .attr("y", -15-margin.bottom/2)
                 //     .text("Women's median weekly salary");
 
-// add equal pay line
+// dividing lines
     svg.append("line")
         .attr("x1", xScale(xMin))
         .attr("x2", xScale(xMax))
         .attr("y1", yScale(1250))
         .attr("y2", yScale(1250))
+        .style("stroke", "gray")
+        .style("stroke-dasharray", ("2, 2"))
+        .style("stroke-width", 0.75);
+    svg.append("line")
+        .attr("x1", xScale(xMin))
+        .attr("x2", xScale(xMax))
+        .attr("y1", yScale(250))
+        .attr("y2", yScale(250))
+        .style("stroke", "gray")
+        .style("stroke-dasharray", ("2, 2"))
+        .style("stroke-width", 0.75);
+    svg.append("line")
+        .attr("x1", xScale(xMin))
+        .attr("x2", xScale(xMax))
+        .attr("y1", yScale(1750))
+        .attr("y2", yScale(1750))
+        .style("stroke", "gray")
+        .style("stroke-dasharray", ("2, 2"))
+        .style("stroke-width", 0.75);
+    svg.append("line")
+        .attr("x1", xScale(xMin))
+        .attr("x2", xScale(xMax))
+        .attr("y1", yScale(2250))
+        .attr("y2", yScale(2250))
+        .style("stroke", "gray")
+        .style("stroke-dasharray", ("2, 2"))
+        .style("stroke-width", 0.75);
+    svg.append("line")
+        .attr("x1", xScale(xMin))
+        .attr("x2", xScale(xMax))
+        .attr("y1", yScale(750))
+        .attr("y2", yScale(750))
         .style("stroke", "gray")
         .style("stroke-dasharray", ("2, 2"))
         .style("stroke-width", 0.75);
@@ -183,9 +227,7 @@
 
 
      //add circles
-            //data_in['event'] = data_in['event'].map(Number)
-            //data_in['time'] = data_in['time'].map(Number)
-            //parse = d3.time.format("%d-%m-%Y-%H-%M").parse
+                color_array = ['#1f78b4', '#33a02c', '#e31a1c', '#ff7f00']
                 svg.selectAll("circle")
                     .data(data_in) //filter to display just data for 2012 .filter(function (d) { return (d.year==2015); })
                     .enter()
@@ -194,7 +236,7 @@
                     .attr("cx", function (d) { return xScale(d.time); })
                     .attr("cy", function (d) { return yScale(d.event);})  //yScale(d.event)
                     .attr("r", 5) //removed function to handle nulls, as they are no longer present
-                    .attr("fill", function(d) { return d.color = color(d.event); })
+                    .attr("fill", function(d) { return d.color = color(d.event); }) // color_array[col_num]
                     .attr("opacity", 0.5)
                     .on("mouseover", function(d) {
                         tooltip.html(d.activity)
@@ -207,65 +249,50 @@
                        })
 
 
-     //transition between views when buttons are clicked
-                // d3.select("#y2012").on("click", function() {
-                //     svg.selectAll("circle")
-                //         .data(gender_pay.filter(function (d) { return (d.year==2012); }))
-                //         .transition()
-                //         .duration(1000)
-                //         .attr("cx", function (d) { return xScale(d.m_salary); })
-                //         .attr("cy", function (d) { return yScale(d.w_salary); })
-                //         .attr("r", 5)
-                // });
-
-
-                // d3.select("#y2013").on("click", function() {
-                //     svg.selectAll("circle")
-                //         .data(gender_pay.filter(function (d) { return (d.year==2013); }))
-                //         .transition()
-                //         .duration(1000)
-                //         .attr("cx", function (d) { return xScale(d.m_salary); })
-                //         .attr("cy", function (d) { return yScale(d.w_salary); })
-                //         .attr("r", 5)
-                // });
-
-
-                 // svg.append("text")
-                 //    .attr("id", "yLabel")
-                 //    .attr("text-anchor", "start")
-                 //    .attr("x", h/2.8)
-                 //    .attr("y", w/6)
-                 //    .text("2012")
-
-
-                 //transition between views when buttons are clicked
-                    // d3.select("#y2012").on("click", function() {
-                    //     svg.selectAll("circle")
-                    //         .data(gender_pay.filter(function (d) { return (d.year==2012); }))
-                    //         .transition()
-                    //         .duration(1000)
-                    //         .attr("cx", function (d) { return xScale(d.m_salary); })
-                    //         .attr("cy", function (d) { return yScale(d.w_salary); })
-                    //         .attr("r", 5)
-                    //     //change the year label
-                    //     svg.select("#yLabel")
-                    //         .text("2012")
-                    // });
-
-
-                    // d3.select("#y2013").on("click", function() {
-                    //     svg.selectAll("circle")
-                    //         .data(gender_pay.filter(function (d) { return (d.year==2013); }))
-                    //         .transition()
-                    //         .duration(1000)
-                    //         .attr("cx", function (d) { return xScale(d.m_salary); })
-                    //         .attr("cy", function (d) { return yScale(d.w_salary); })
-                    //         .attr("r", 5)
-                    //     //change the year label
-                    //     svg.select("#yLabel")
-                    //         .text("2013")
-                    // });
-
-  //});
                 return [xMax, xMin]
+};
+
+
+
+function passData(data) {
+data.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
+//data1.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
+//data2.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
+//data3.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
+
+//all_data = [data1,data2,data3]
+//
+//var xMin = d3.min(data, function(d){ return Math.min(d.time); });
+//var xMax = d3.max(data, function(d){ return Math.max(d.time); });
+
+//for (i = 0; i < all_data.length; i++) {
+//    var tMin = d3.min(all_data[i], function(d){ return Math.min(d.time); });
+//    var tMax = d3.max(all_data[i], function(d){ return Math.max(d.time); });
+//    if (tMin < xMin){
+//        xMin = tMin
+//    }
+//    if (tMax > xMax){
+//        xMax = tMax
+//    }
+//}
+//console.log(xMax, xMin)
+//var old_max = xMax
+//var old_min = xMin
+result = makeGraphs(true, data);
+//old_max = result[0]
+//old_min = result[1]
+//console.log(old_max, old_min)
+//result = makeGraphs(false, data1,old_max, old_min, 1);
+//old_max = result[0]
+//old_min = result[1]
+//console.log(old_max, old_min)
+//result = makeGraphs(false, data2,old_max, old_min, 2);
+//old_max = result[0]
+//old_min = result[1]
+//console.log(old_max, old_min)
+//result = makeGraphs(true, data3,old_max, old_min, 3);
+//old_max = result[0]
+//old_min = result[1]
+//console.log(old_max, old_min)
+
 };

@@ -32,56 +32,65 @@ function papaParser(file){
 
 			visualiseOtherTeamData();*/
 
+			dropDown();
+
 			newVisualisation();
 		}
 	});
 }
 
+function dropDown(){
+	var list = []
+
+	//note object literal is being returned
+	for(item in getColOnce(results.data, 'actor_displayname'))
+		list.push(item)
+	for(item in getColOnce(results.data, 'activity_type'))
+		list.push(item)
+	/*for(item in getColOnce(results.data, 'actor'))
+		list.push(item)*/
+
+	console.log(list)
+
+	//accessWithData(results.data, COL_NAME, CELL_NAME)
+}
 function newVisualisation(){
+	var data = []
+	var activities = [' weather', 'temperature drops', 'orbit', 'stock market'];
 
-	//data format:
-	//var data1 =  [{time:'Thu 9 Apr 2015 20:30:09 GMT +0',event:1250,activity:' weather rises'}]
+	//below are object literals
+	var actor_displayname_group = getColOnce(results.data, 'actor_displayname');
+	var activity_type_group = getColOnce(results.data, 'activity_type');
 
+	for(a in activities){
+		console.log(activities[a])
+		var scopedToActivity;
 
-	data.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-	data1.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-	data2.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-	data3.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
+		if(activities[a] in activity_type_group == true){
+			console.log('scoped by activity_type')
+			scopedToActivity = accessWithData(results.data, 'activity_type', activities[a])
+		}
 
-	all_data = [data1,data2,data3]
+		if(activities[a] in actor_displayname_group == true){
+			console.log('scoped by actor_displayname')
+			scopedToActivity = accessWithData(results.data, 'actor_displayname', activities[a])
+		}
+		console.log('scoped to activity')
+		console.log(scopedToActivity)
 
-	var xMin = d3.min(data, function(d){ return Math.min(d.time); });
-	var xMax = d3.max(data, function(d){ return Math.max(d.time); });
+		var timeArray = getCol(scopedToActivity, 'timestamp');
 
-	for (i = 0; i < all_data.length; i++) {            
-	    var tMin = d3.min(all_data[i], function(d){ return Math.min(d.time); });
-	    var tMax = d3.max(all_data[i], function(d){ return Math.max(d.time); });
-	    if (tMin < xMin){
-	        xMin = tMin
-	    }
-	    if (tMax > xMax){
-	        xMax = tMax
-	    }
+		for(i in timeArray){
+			data.push({
+				'time': timeArray[i],
+				'event': a*500 + 500,
+				'activity': activities[a]
+			})
+		}
 	}
-	console.log(xMax, xMin)
-	var old_max = xMax
-	var old_min = xMin
-	result = makeGraphs(false, data,old_max, old_min);
-	old_max = result[0]
-	old_min = result[1]
-	console.log(old_max, old_min)
-	result = makeGraphs(false, data1,old_max, old_min);
-	old_max = result[0]
-	old_min = result[1]
-	console.log(old_max, old_min)
-	result = makeGraphs(false, data2,old_max, old_min);
-	old_max = result[0]
-	old_min = result[1]
-	console.log(old_max, old_min)
-	result = makeGraphs(true, data3,old_max, old_min);
-	old_max = result[0]
-	old_min = result[1]
-	console.log(old_max, old_min)
+
+	console.log(data)
+	passData(data)
 }
 
 function visualiseOtherTeamData(){
