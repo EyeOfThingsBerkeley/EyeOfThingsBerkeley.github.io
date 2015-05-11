@@ -33,10 +33,19 @@ function papaParser(file){
 			visualiseOtherTeamData();*/
 
 			dropDown();
+			document.getElementById('1st-selector').value = 'BARTtrain';
+			document.getElementById('2nd-selector').value = 'temperature drops';
+			document.getElementById('3rd-selector').value = 'orbit';
+			document.getElementById('4th-selector').value = 'stock market'
 
 			newVisualisation();
 		}
 	});
+}
+
+document.getElementById('apply-btn').onclick = function(){
+	console.log('clicked')
+	newVisualisation()
 }
 
 function dropDown(){
@@ -52,31 +61,56 @@ function dropDown(){
 
 	console.log(list)
 
+	var x1 = document.getElementById("1st-selector");
+	var x2 = document.getElementById("2nd-selector");
+	var x3 = document.getElementById("3rd-selector");
+	var x4 = document.getElementById("4th-selector");
+	for(i in list){
+		var option1 = document.createElement("option");
+		var option2 = document.createElement("option");
+		var option3 = document.createElement("option");
+		var option4 = document.createElement("option");
+	  option1.text = list[i];
+	  option2.text = list[i];
+	  option3.text = list[i];
+	  option4.text = list[i];
+	  x1.add(option1);
+	  x2.add(option2);
+	  x3.add(option3);
+	  x4.add(option4);
+	}
+
 	//accessWithData(results.data, COL_NAME, CELL_NAME)
 }
 function newVisualisation(){
 	var data = []
-	var activities = [' weather', 'temperature drops', 'orbit', 'stock market'];
+	var activities = [];
+	activities.push( document.getElementById('1st-selector').value );
+	activities.push( document.getElementById('2nd-selector').value );
+	activities.push( document.getElementById('3rd-selector').value );
+	activities.push( document.getElementById('4th-selector').value );
+
+	console.log(activities)
 
 	//below are object literals
 	var actor_displayname_group = getColOnce(results.data, 'actor_displayname');
 	var activity_type_group = getColOnce(results.data, 'activity_type');
 
 	for(a in activities){
-		console.log(activities[a])
+		//console.log(activities[a])
 		var scopedToActivity;
 
 		if(activities[a] in activity_type_group == true){
-			console.log('scoped by activity_type')
+			//console.log('scoped by activity_type')
 			scopedToActivity = accessWithData(results.data, 'activity_type', activities[a])
 		}
 
 		if(activities[a] in actor_displayname_group == true){
-			console.log('scoped by actor_displayname')
+			//console.log('scoped by actor_displayname')
 			scopedToActivity = accessWithData(results.data, 'actor_displayname', activities[a])
 		}
-		console.log('scoped to activity')
-		console.log(scopedToActivity)
+		//console.log('scoped to activity')
+		//console.log(scopedToActivity)
 
 		var timeArray = getCol(scopedToActivity, 'timestamp');
 

@@ -256,43 +256,7 @@
 
 function passData(data) {
 data.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-//data1.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-//data2.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-//data3.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
 
-//all_data = [data1,data2,data3]
-//
-//var xMin = d3.min(data, function(d){ return Math.min(d.time); });
-//var xMax = d3.max(data, function(d){ return Math.max(d.time); });
-
-//for (i = 0; i < all_data.length; i++) {
-//    var tMin = d3.min(all_data[i], function(d){ return Math.min(d.time); });
-//    var tMax = d3.max(all_data[i], function(d){ return Math.max(d.time); });
-//    if (tMin < xMin){
-//        xMin = tMin
-//    }
-//    if (tMax > xMax){
-//        xMax = tMax
-//    }
-//}
-//console.log(xMax, xMin)
-//var old_max = xMax
-//var old_min = xMin
 result = makeGraphs(true, data);
-//old_max = result[0]
-//old_min = result[1]
-//console.log(old_max, old_min)
-//result = makeGraphs(false, data1,old_max, old_min, 1);
-//old_max = result[0]
-//old_min = result[1]
-//console.log(old_max, old_min)
-//result = makeGraphs(false, data2,old_max, old_min, 2);
-//old_max = result[0]
-//old_min = result[1]
-//console.log(old_max, old_min)
-//result = makeGraphs(true, data3,old_max, old_min, 3);
-//old_max = result[0]
-//old_min = result[1]
-//console.log(old_max, old_min)
 
 };
