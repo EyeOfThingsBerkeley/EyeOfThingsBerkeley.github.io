@@ -29,7 +29,7 @@
 
              }
 
-            start=startGraphic(700,600,{ top: 20, right: 0, bottom: 0, left: 100 });
+            start=startGraphic(800,500,{ top: 20, right: 0, bottom: 0, left: 100 });
 
             var svg = start['svg'];
             var margin = start['margin'];
@@ -261,6 +261,7 @@ data.forEach(function(d) {
   }
   catch(e){console.log(e)}
 });
+
 result = makeGraphs(true, data);
 
 };
