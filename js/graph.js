@@ -308,21 +308,35 @@ function updateData(data) {
 
     // Make the changes
         var circle = d3.select('#chart').selectAll(".circle")   // change the line
-            .data(data)
+            .data(data);
             //.duration(750)
-            .attr("cx", function (d) { return xScale(d.time); })
-            .attr("cy", function (d) { return yScale(d.event);});
+            //.attr("cx", function (d) { return xScale(d.time); })
+            //.attr("cy", function (d) { return yScale(d.event);});
 
-        circle.attr("class", "update");
+        circle.attr("class", "update")
+        .transition()
+          .duration(750)
+          .attr("cx", function (d) { return xScale(d.time); })
+          .attr("cy", function (d) { return yScale(d.event);});
 
         circle.enter().append("circle")
         .attr("class", "enter")
         .attr("cx", function (d) { return xScale(d.time); })
-        .attr("cy", function (d) { return yScale(d.event);});
+        .attr("cy", function (d) { return yScale(d.event);})
+        .transition()
+          .duration(750)
+          .attr("y", 0)
+          .style("fill-opacity", 1);
 
-        //circle.text(function(d) { return d; });
 
-        circle.exit().remove();
+
+        circle.exit()
+        .attr("class", "exit")
+        .transition()
+            .duration(750)
+            .attr("y", 60)
+            .style("fill-opacity", 1e-6)
+            .remove();
 
         d3.select(".x.axis") // change the x axis
             //.duration(750)
