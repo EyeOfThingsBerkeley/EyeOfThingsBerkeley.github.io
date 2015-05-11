@@ -33,10 +33,10 @@ function papaParser(file){
 			visualiseOtherTeamData();*/
 
 			dropDown();
-			document.getElementById('1st-selector').value = 'BARTtrain';
-			document.getElementById('2nd-selector').value = 'temperature drops';
+			document.getElementById('1st-selector').value = 'iss';
+			document.getElementById('2nd-selector').value = 'Windpark Monitor';
 			document.getElementById('3rd-selector').value = 'orbit';
-			document.getElementById('4th-selector').value = 'stock market'
+			document.getElementById('4th-selector').value = 'new article'
 
 			newVisualisation(false);
 		}
@@ -90,8 +90,6 @@ function newVisualisation(test) {
 	activities.push( document.getElementById('3rd-selector').value );
 	activities.push( document.getElementById('4th-selector').value );
 
-	console.log(activities);
-
 	//below are object literals
 	var actor_displayname_group = getColOnce(results.data, 'actor_displayname');
 	var activity_type_group = getColOnce(results.data, 'activity_type');
@@ -100,12 +98,12 @@ function newVisualisation(test) {
 		//console.log(activities[a])
 		var scopedToActivity;
 
-		if(activities[a] in activity_type_group == true){
+		if(activities[a] in activity_type_group){
 			//console.log('scoped by activity_type')
 			scopedToActivity = accessWithData(results.data, 'activity_type', activities[a])
 		}
 
-		if(activities[a] in actor_displayname_group == true){
+		if(activities[a] in actor_displayname_group){
 			//console.log('scoped by actor_displayname')
 			scopedToActivity = accessWithData(results.data, 'actor_displayname', activities[a])
 		}
@@ -313,8 +311,6 @@ function access(target_col, target_item, target_data){
 function accessWithData(results, target_col, target_item, target_data){
 	//iff target_data is null, the first row is the headers
 
-	//var actor = 'actor';
-	//var actor_col = 0; //col where the actor is in
 	var header = results[0]; //header is the 0th row
 	var col = 0;
 	var target_data_col = []

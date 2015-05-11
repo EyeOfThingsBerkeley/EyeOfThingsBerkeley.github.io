@@ -255,8 +255,9 @@
 
 function passData(data) {
 document.getElementById('chart').innerHTML = '';
+try{
 data.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
-
+}catch(e){console.log(e)}
 result = makeGraphs(true, data);
 
 };
