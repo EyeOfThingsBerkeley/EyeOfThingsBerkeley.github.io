@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<!--
+	Astral by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Eye of Things</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+        <script src="js/papaparse.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://dimplejs.org/dist/dimple.v2.1.2.js"></script>
+        <link rel="stylesheet" href="css/graph_style.css">
+
+		<noscript>
+<!--            <link rel="stylesheet" href="css/bootstrap.min.css">-->
+			<link rel="stylesheet" href="css/skel.css" />
+<!--			<link rel="stylesheet" href="css/style.css" />-->
+<!--			<link rel="stylesheet" href="css/style-noscript.css" />-->
+
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+
+
+		<!-- Wrapper-->
+			<div id="wrapper">
+
+				<!-- Nav -->
+					<nav id="nav">
+						<a href="#home" class="active icon fa-home"><span>Home</span></a>
+<!--						<a href="#about" class="icon fa-user"><span>Work</span></a>-->
+						<a href="#charts" class="icon fa-bar-chart"><span>Charts</span></a>
+						<a href="#about" class="icon fa-question-circle"><span>About</span></a>
+<!--                        <a href="#instructions1" class=""><span></span></a>-->
+
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Me -->
+
+							<article id="home" class="panel">
+								<header>
+                                    <span class="logo">Eye of Things</span>
+
+									<span class="byline">see what happens</span>
+								</header>
+
+
+								<a href="#about" class="jumplink pic">
+									<span class="arrow icon fa-chevron-right"><span>Start Voting</span></span>
+									<!-- <img src="images/me.jpg" alt="" /> -->
+
+								</a>
+							</article>
+
+						<!-- Work -->
+							<article id="about" class="panel">
+								<header>
+									<h2 align=center>How to use Eye of Things</h2>
+								</header>
+
+                                <p><br>Things you'll need:</p>
+                                <table>
+
+                                    <tr>
+                                    <td><li>An AsBase Account</li> </td>
+                                        <td><a href="http://">AsBase</a></td>
+
+                                    </tr>
+
+                                    <tr>
+                                    <td><li>An IFTTT Account</li> </td>
+                                        <td><a href="http://www.ifttt.com"><img src = "images/ifttt.png" width="100px"></a></td>
+
+                                    </tr>
+
+                                    <tr>
+                                    <td><li>An IFTTT Recipe which pushs into the Eye of Things Databin</li> </td>
+
+                                    </tr>
+
+                                </table>
+
+
+                                         <img src="images/step_010.png" align=right>
+
+
+
+                                        <img src="images/step_020.png" align=right>
+                                        <p>Step 1:
+                                        <span>Once logged into IFTTT, create a new recipe. In this example we're going to use the 'Space' channel to create a trigger.
+                                        </span></p>
+                                        <img src="images/step_030.png" align=right>
+                                 <p>Step 2:
+                                        <span>We select the ISS trigger.
+                                        </span></p>
+                                        <img src="images/step_040.png" align=right>
+                                    <p></p>
+                                    <br><br><br><br><br><br><br><br><br>
+
+
+                                        <img src="images/step_050.png" align=right>
+                                <p>Step 3:
+                                        <span>We select a location to track.
+                                        </span></p>
+                                        <img src="images/step_060.png" align=right>
+
+                                <br><br><br><br><br><br><br><br><br>
+                                <br><br><br><br><br>
+                                <br><br><br><br><br><br><br>
+
+                                  <p>Step 4:
+                                        <span>Select the Gmail Channel.
+                                        </span></p>
+
+                                 <br><br><br><br><br>
+                                <br><br><br><br><br><br><br>
+
+                                  <p>Step 5:
+                                        <span>Send data to the Eye Of Things databin using these credentials, along with data that follows the Eye of Things data conventions.
+                                      A description of our data schema can be found at EyeofThingsBerkeley.Github.Io
+                                      </span></p>
+
+
+							</article>
+
+
+						<!-- Contact -->
+							<article id="charts" class="panel">
+								<header>
+									<h2>Visualize with the Eye of Things</h2>
+                                    <br><br>
+                                    <div id='forms'>
+                                        <form><select id="4th-selector" class='selectors' size="4"></select></form>
+                                        <form><select id="3rd-selector" class='selectors' size="4"></select></form>
+                                        <form><select id="2nd-selector" class='selectors' size="4"></select></form>
+                                        <form><select id="1st-selector" class='selectors' size="4"></select></form>
+                                        <button id='apply-btn' type="button">Apply</button>
+                                    </div>
+
+                                        <div id="chart"></div>
+
+                                        <script src="js/graph.js"></script>
+                                        <script src="js/dataProcessing.js"></script>
+                                    <br><br><br><br>
+                                    <h3> Pocket Reading Habits</h3>
+
+                                    <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 700px;' ><noscript><a href='#'><img alt='Eye of Things Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ey&#47;EyeofThingsA6&#47;EyeofThingsDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='100%' height='869' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='EyeofThingsA6&#47;EyeofThingsDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ey&#47;EyeofThingsA6&#47;EyeofThingsDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showVizHome' value='no' /><param name='showTabs' value='y' /><param name='bootstrapWhenNotified' value='true' /></object></div>
+								</header>
+
+
+
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<div id="footer">
+						<ul class="copyright">
+							<li>&copy; Colin Gerber, Leland Lee, Xavier Malina & Alex Yao</li><li>Original Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+	</body>
+</html>

@@ -3,7 +3,7 @@
 var oReq = new XMLHttpRequest();
 //Method below gets execured onload
 oReq.onload = function(){ papaParser(this.responseText); };
-oReq.open("GET", "IoT Parsing/data/datadrop_output_with_weather.csv", true); //loots of columns....actor vs actor_displayname
+oReq.open("GET", "datadrop_output_with_weather.csv", true); //loots of columns....actor vs actor_displayname
 oReq.send();
 
 
