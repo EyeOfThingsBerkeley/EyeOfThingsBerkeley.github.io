@@ -308,10 +308,8 @@ function updateData(data) {
 
     // Make the changes
         var circle = d3.select('#chart').selectAll(".circle")   // change the line
-            .data(data);
-            //.duration(750)
-            //.attr("cx", function (d) { return xScale(d.time); })
-            //.attr("cy", function (d) { return yScale(d.event);});
+            .data(data); //, function(d) { return d;}
+
 
         circle.attr("class", "update")
         .transition()
