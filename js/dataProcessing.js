@@ -124,11 +124,12 @@ function newVisualisation(test) {
 	}
 
 	console.log(data);
-	if (test) {
+	/*if (test) {
 		updateData(data);
 	} else {
 		passData(data);
-	}
+	}*/
+	passData(data)
 }
 
 function visualiseOtherTeamData(){
