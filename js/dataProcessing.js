@@ -22,12 +22,12 @@ function papaParser(file){
 			results_user.data = scopeToUser('Colin');
 			var weatherScopedResults = scopeToUser('weather')
 			drawWeather(weatherScopedResults);
-			
+
 
 			//is it better to scope? or use the access method??
 			var saleScopedResults = getSale();
 			drawSale(saleScopedResults);
-			
+
 			getAllUserData('colin');
 
 			visualiseOtherTeamData();*/
@@ -38,14 +38,14 @@ function papaParser(file){
 			document.getElementById('3rd-selector').value = 'orbit';
 			document.getElementById('4th-selector').value = 'stock market'
 
-			newVisualisation();
+			newVisualisation(false);
 		}
 	});
 }
 
 document.getElementById('apply-btn').onclick = function(){
 	console.log('clicked')
-	newVisualisation()
+	newVisualisation(true);
 }
 
 function dropDown(){
@@ -82,20 +82,20 @@ function dropDown(){
 
 	//accessWithData(results.data, COL_NAME, CELL_NAME)
 }
-function newVisualisation(){
-	var data = []
+function newVisualisation(test) {
+	var data = [];
 	var activities = [];
 	activities.push( document.getElementById('1st-selector').value );
 	activities.push( document.getElementById('2nd-selector').value );
 	activities.push( document.getElementById('3rd-selector').value );
 	activities.push( document.getElementById('4th-selector').value );
 
-	console.log(activities)
+	console.log(activities);
 
 	//below are object literals
 	var actor_displayname_group = getColOnce(results.data, 'actor_displayname');
 	var activity_type_group = getColOnce(results.data, 'activity_type');
-
+	console.log(activities)
 	for(a in activities){
 		//console.log(activities[a])
 		var scopedToActivity;
@@ -123,8 +123,12 @@ function newVisualisation(){
 		}
 	}
 
-	console.log(data)
-	passData(data)
+	console.log(data);
+	if (test) {
+		updateData(data);
+	} else {
+		passData(data);
+	}
 }
 
 function visualiseOtherTeamData(){
@@ -148,7 +152,7 @@ function visualiseOtherTeamData(){
 			})
 			if(typeof timeArray[i] != 'undefined' && typeof valArray[i] != 'undefined')
 				toGraphDimpleFormat.push({
-					'Time':timeArray[i], 
+					'Time':timeArray[i],
 					'Value': 0
 				})
 		}
@@ -231,7 +235,7 @@ function drawSale(data){
 		}
 	}
 
-	//how to use datetime for dimple? 
+	//how to use datetime for dimple?
 	var w = 1000
 	var h = 500;
 	var svg = dimple.newSvg("#chartContainerSale", w, h);
@@ -260,7 +264,7 @@ function drawWeather(data){
 		}
 	}
 
-	//how to use datetime for dimple? 
+	//how to use datetime for dimple?
 	var w = 1000
 	var h = 500;
 	var svg = dimple.newSvg("#chartContainer", w, h);
@@ -395,7 +399,7 @@ function getColOnce(results, target_col){
 	for(var i = 1; i < rows.length; i++){
 		var cell = rows[i][col];
 		if(cell in activies){
-			activies[cell] += 1; 
+			activies[cell] += 1;
 		}
 		else{
 			activies[cell] = 1;

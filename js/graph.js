@@ -249,7 +249,6 @@
                        })
 
 
-                return [xMax, xMin]
 };
 
 
@@ -260,3 +259,77 @@ data.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
 result = makeGraphs(true, data);
 
 };
+
+function updateData(data) {
+
+
+      // Scale the range of the data again
+      //x.domain(d3.extent(data, function(d) { return d.date; }));
+      //y.domain([0, d3.max(data, function(d) { return d.close; })]);
+
+    data.forEach(function(d) { d.time = new Date(Date.parse(d.time)); });
+
+    var xMin = d3.min(data, function(d){ return Math.min(d.time); });
+    var xMax = d3.max(data, function(d){ return Math.max(d.time); });
+
+    margin = { top: 20, right: 0, bottom: 0, left: 100 };
+    h = 500 - margin.top - margin.bottom
+    w = 800 - margin.left - margin.right
+    console.log(data)
+    var timeFormat = d3.time.format("%I:%M %p %m/%d");
+
+    // padding
+    var padding = 80;
+
+    //Create scales for X and Y axes
+    var xScale = d3.time.scale()
+        .domain([xMin, xMax])
+        .range([margin.left, w - margin.right]);
+
+
+    var yScale = d3.scale.linear()
+             .domain([0, 2500])
+             .range([h - margin.top, margin.bottom]);
+
+    var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient("bottom")
+                  .ticks(5)
+                  .tickFormat(timeFormat);
+
+    var yAxis = d3.svg.axis()
+                  .scale(yScale)
+                  .orient("left")
+                  .ticks(5);
+
+
+    // Select the section we want to apply our changes to
+    //var svg = d3.select("svg").transition();
+
+    // Make the changes
+        var circle = d3.select('#chart').selectAll(".circle")   // change the line
+            .data(data)
+            //.duration(750)
+            .attr("cx", function (d) { return xScale(d.time); })
+            .attr("cy", function (d) { return yScale(d.event);});
+
+        circle.attr("class", "update");
+
+        circle.enter().append("circle")
+        .attr("class", "enter")
+        .attr("cx", function (d) { return xScale(d.time); })
+        .attr("cy", function (d) { return yScale(d.event);});
+
+        //circle.text(function(d) { return d; });
+
+        circle.exit().remove();
+
+        d3.select(".x.axis") // change the x axis
+            //.duration(750)
+            .call(xAxis);
+        d3.select(".y.axis") // change the y axis
+            //.duration(750)
+            .call(yAxis);
+
+    };
+
